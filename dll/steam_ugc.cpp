@@ -173,6 +173,7 @@ bool Steam_UGC::write_ugc_favorites()
 
 bool Steam_UGC::internal_GetQueryUGCResult( UGCQueryHandle_t handle, uint32 index, SteamUGCDetails_t *pDetails, IUgcItfVersion ver )
 {
+    PRINT_DEBUG_ENTRY();
     PRINT_DEBUG("%llu [%u] %p <%u>", handle, index, pDetails, (unsigned)ver);
     std::lock_guard<std::recursive_mutex> lock(global_mutex);
 
@@ -445,12 +446,14 @@ SteamAPICall_t Steam_UGC::SendQueryUGCRequest( UGCQueryHandle_t handle )
 // Retrieve an individual result after receiving the callback for querying UGC
 bool Steam_UGC::GetQueryUGCResult( UGCQueryHandle_t handle, uint32 index, SteamUGCDetails_t *pDetails )
 {
+    PRINT_DEBUG_ENTRY();
     PRINT_DEBUG("%llu %u %p", handle, index, pDetails);
     return internal_GetQueryUGCResult(handle, index, pDetails, IUgcItfVersion::v020);
 }
 
 bool Steam_UGC::GetQueryUGCResult_old( UGCQueryHandle_t handle, uint32 index, SteamUGCDetails_t *pDetails )
 {
+    PRINT_DEBUG_ENTRY();
     PRINT_DEBUG("%llu %u %p", handle, index, pDetails);
     return internal_GetQueryUGCResult(handle, index, pDetails, IUgcItfVersion::v018);
 }
