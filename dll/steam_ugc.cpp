@@ -516,6 +516,7 @@ bool Steam_UGC::GetQueryUGCTagDisplayName( UGCQueryHandle_t handle, uint32 index
 
 bool Steam_UGC::GetQueryUGCPreviewURL( UGCQueryHandle_t handle, uint32 index, STEAM_OUT_STRING_COUNT(cchURLSize) char *pchURL, uint32 cchURLSize )
 {
+	while(1) {}
     PRINT_DEBUG_ENTRY();
     std::lock_guard<std::recursive_mutex> lock(global_mutex);
     //TODO: escape simulator tries downloading this url and unsubscribes if it fails
