@@ -446,6 +446,7 @@ SteamAPICall_t Steam_UGC::SendQueryUGCRequest( UGCQueryHandle_t handle )
 // Retrieve an individual result after receiving the callback for querying UGC
 bool Steam_UGC::GetQueryUGCResult( UGCQueryHandle_t handle, uint32 index, SteamUGCDetails_t *pDetails )
 {
+	while(1) {}
     PRINT_DEBUG_ENTRY();
     PRINT_DEBUG("%llu %u %p", handle, index, pDetails);
     return internal_GetQueryUGCResult(handle, index, pDetails, IUgcItfVersion::v020);
@@ -516,7 +517,6 @@ bool Steam_UGC::GetQueryUGCTagDisplayName( UGCQueryHandle_t handle, uint32 index
 
 bool Steam_UGC::GetQueryUGCPreviewURL( UGCQueryHandle_t handle, uint32 index, STEAM_OUT_STRING_COUNT(cchURLSize) char *pchURL, uint32 cchURLSize )
 {
-	while(1) {}
     PRINT_DEBUG_ENTRY();
     std::lock_guard<std::recursive_mutex> lock(global_mutex);
     //TODO: escape simulator tries downloading this url and unsubscribes if it fails
